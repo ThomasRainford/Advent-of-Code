@@ -6,10 +6,7 @@ type Movement = {
 };
 
 const readInput = (): Movement[] => {
-  const data: Movement[] = readFileSync(
-    "./src/day-2/p2/sampleInput.txt",
-    "utf8"
-  )
+  const data: Movement[] = readFileSync("./src/day-2/p2/input.txt", "utf8")
     .split("\n")
     .map((item: string) => {
       const mv = item.split(" ");
@@ -24,18 +21,20 @@ export const p2 = () => {
   const movements = readInput();
   let horizontal = 0;
   let depth = 0;
+  let aim = 0;
 
   for (let i = 0; i < movements.length; i++) {
     const mvmt = movements[i];
     switch (mvmt.direction) {
       case "forward":
         horizontal += mvmt.amount;
+        depth += aim * mvmt.amount;
         break;
       case "up":
-        depth -= mvmt.amount;
+        aim -= mvmt.amount;
         break;
       case "down":
-        depth += mvmt.amount;
+        aim += mvmt.amount;
         break;
       default:
         console.log("Problem with input file.");
