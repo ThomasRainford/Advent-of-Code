@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 
-const data: number[] = readFileSync("./src/day-1/input.txt", "utf8")
+const data: number[] = readFileSync("./src/day-1/p1/input.txt", "utf8")
   .split("\n")
   .map((item: string) => parseInt(item));
 
