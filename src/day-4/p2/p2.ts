@@ -12,7 +12,7 @@ type Board = {
 };
 
 const readInput = () => {
-  const data = readFileSync("./src/day-4/p1/input.txt", "utf8")
+  const data = readFileSync("./src/day-4/p2/input.txt", "utf8")
     .split("\n")
     .filter((item) => item !== "");
 
@@ -49,6 +49,13 @@ const parse = (data: string[]): [Input, Board[]] => {
   return [numbers, bds];
 };
 
+const print = (boards: Board[]) => {
+  boards.forEach((board) => {
+    console.log("Board === ");
+    console.log(board.numbers);
+  });
+};
+
 const checkBoard = (board: Board) => {
   const columns = (m: Number[][]) => m[0].map((_, i) => m.map((x) => x[i]));
   const boardColumn = columns(board.numbers);
@@ -73,22 +80,22 @@ const sumUnmarked = (board: Board): number => {
   let sum = 0;
   board.numbers.forEach((row) =>
     row.forEach((number) => {
-      if (number.mkd === 0) {
-        console.log(number.num);
-        sum += number.num;
-      }
+      if (number.mkd === 0) sum += number.num;
     })
   );
   return sum;
 };
 
-export const p1 = () => {
-  const [input, boards] = parse(readInput());
-
+const winner = (
+  boards: Board[],
+  input: Input
+): [Board | undefined, number | undefined, number] => {
   let winningBoard;
   let winningNumber;
+  let count = 0;
   for (let i = 0; i < input.length; i++) {
     const currentNum = input[i];
+    count++;
     for (let bi = 0; bi < boards.length; bi++) {
       const board: Board = boards[bi];
       for (let rowi = 0; rowi < board.numbers.length; rowi++) {
@@ -109,9 +116,24 @@ export const p1 = () => {
     }
     if (winningBoard) break;
   }
+  return [winningBoard, winningNumber, count];
+};
 
-  if (winningBoard && winningNumber) {
-    const sum = sumUnmarked(winningBoard);
-    console.log(sum * winningNumber);
-  }
+export const p2 = () => {
+  const [input, boards] = parse(readInput());
+
+  let max = 0;
+  let b;
+  let num;
+  boards.forEach((board) => {
+    const won = winner([board], input);
+    const count = won[2];
+    if (count > max) {
+      max = count;
+      b = won[0];
+      num = won[1];
+    }
+  });
+
+  if (num && b) console.log(sumUnmarked(b) * num);
 };
