@@ -5,7 +5,7 @@
      "lib": [
        "dom",
        "es6",
-       "es2021",
+       "esnext",
        "esnext.asynciterable"
      ],
      "skipLibCheck": true,

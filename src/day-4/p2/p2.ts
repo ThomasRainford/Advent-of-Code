@@ -135,5 +135,6 @@ export const p2 = () => {
     }
   });
 
+  print(boards);
   if (num && b) console.log(sumUnmarked(b) * num);
 };

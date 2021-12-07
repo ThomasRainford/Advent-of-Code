@@ -81,7 +81,7 @@ const sumUnmarked = (board: Board): number => {
   board.numbers.forEach((row) =>
     row.forEach((number) => {
       if (number.mkd === 0) {
-        //console.log(number.num);
+        console.log(number.num);
         sum += number.num;
       }
     })
@@ -117,9 +117,9 @@ export const p1 = () => {
     if (winningBoard) break;
   }
 
-  console.log(winningNumber);
+  print(boards);
   if (winningBoard && winningNumber) {
     const sum = sumUnmarked(winningBoard);
-    //console.log(sum * winningNumber);
+    console.log(sum * winningNumber);
   }
 };
