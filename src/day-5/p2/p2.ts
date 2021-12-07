@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 
 const readInput = () => {
-  let data = readFileSync("./src/day-5/p1/sample.txt", "utf8")
+  let data = readFileSync("./src/day-5/p2/input.txt", "utf8")
     .split("\n")
     .map((row) =>
       row.split(" -> ").map((c) => c.split(",").map((n) => parseInt(n)))
@@ -17,7 +17,7 @@ export const p2 = () => {
     line.forEach((c) => coords.push(c));
   });
 
-  const SIZE = 10;
+  const SIZE = 1000;
 
   const grid: number[][] = [];
 
@@ -43,6 +43,12 @@ export const p2 = () => {
         grid[xi][y1]++;
       }
     } else {
+      for (let xi = x1, yi = y1; xi != x2 && yi != y2; ) {
+        grid[xi][yi]++;
+        x1 < x2 ? xi++ : xi--;
+        y1 < y2 ? yi++ : yi--;
+      }
+      grid[x2][y2]++;
     }
   }
 
