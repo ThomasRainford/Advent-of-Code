@@ -83,8 +83,6 @@ const check = (
       return -1;
     }
   } else {
-    // ok
-    // middle
     const right = input[y][x + 1];
     const left = input[y][x - 1];
     const top = input[y - 1][x];
@@ -100,84 +98,6 @@ const check = (
       return -1;
     }
   }
-
-  // if (y === 0) {
-  //   // top
-  //   if (x === 0) {
-  //     const right = input[y][x + 1];
-  //     const bottom = input[y + 1][x];
-  //     if (current < right && current < bottom) {
-  //       return current;
-  //     } else {
-  //       return -1;
-  //     }
-  //   } else if (x === input[0].length - 1) {
-  //     // ok
-  //     const left = input[y][x - 1];
-  //     const bottom = input[y + 1][x];
-  //     if (current < left && current < bottom) {
-  //       return current;
-  //     } else {
-  //       return -1;
-  //     }
-  //   } else {
-  //     // ok
-  //     const right = input[y][x + 1];
-  //     const left = input[y][x - 1];
-  //     const bottom = input[y + 1][x];
-  //     if (current < left && current < right && current < bottom) {
-  //       return current;
-  //     } else {
-  //       return -1;
-  //     }
-  //   }
-  // } else if (y === input.length - 1) {
-  //   // bottom
-  //   if (x === 0) {
-  //     const right = input[y][x + 1];
-  //     const top = input[y - 1][x];
-  //     if (current < right && current < top) {
-  //       return current;
-  //     } else {
-  //       return -1;
-  //     }
-  //   } else if (x === input[0].length - 1) {
-  //     const left = input[y][x - 1];
-  //     const top = input[y - 1][x];
-  //     if (current < left && current < top) {
-  //       return current;
-  //     } else {
-  //       return -1;
-  //     }
-  //   } else {
-  //     // ok
-  //     const right = input[y][x + 1];
-  //     const top = input[y - 1][x];
-  //     const left = input[y][x - 1];
-  //     if (current < right && current < top && current < left) {
-  //       return current;
-  //     } else {
-  //       return -1;
-  //     }
-  //   }
-  // } else {
-  //   // ok
-  //   // middle
-  //   const right = input[y][x + 1];
-  //   const left = input[y][x - 1];
-  //   const top = input[y - 1][x];
-  //   const bottom = input[y + 1][x];
-  //   if (
-  //     current < left &&
-  //     current < right &&
-  //     current < top &&
-  //     current < bottom
-  //   ) {
-  //     return current;
-  //   } else {
-  //     return -1;
-  //   }
-  // }
 };
 
 export const p1 = () => {
