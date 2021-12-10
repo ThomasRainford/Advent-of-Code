@@ -14,6 +14,7 @@ const check = (
   x: number,
   y: number
 ): number => {
+  // top - left
   if (y === 0 && x === 0) {
     const right = input[y][x + 1];
     const bottom = input[y + 1][x];
@@ -22,6 +23,7 @@ const check = (
     } else {
       return -1;
     }
+    // top - right
   } else if (y === 0 && x === input[0].length - 1) {
     const left = input[y][x - 1];
     const bottom = input[y + 1][x];
@@ -30,6 +32,7 @@ const check = (
     } else {
       return -1;
     }
+    // bottom - left
   } else if (y === input.length - 1 && x === 0) {
     const right = input[y][x + 1];
     const top = input[y - 1][x];
@@ -38,6 +41,7 @@ const check = (
     } else {
       return -1;
     }
+    // bottom - right
   } else if (y === input.length - 1 && x === input[0].length - 1) {
     const left = input[y][x - 1];
     const top = input[y - 1][x];
@@ -46,6 +50,7 @@ const check = (
     } else {
       return -1;
     }
+    // left - middle
   } else if (x === 0 && y > 0 && y < input.length - 1) {
     const right = input[y][x + 1];
     const top = input[y - 1][x];
@@ -55,6 +60,7 @@ const check = (
     } else {
       return -1;
     }
+    // top - middle
   } else if (y === 0 && x > 0 && x < input[0].length - 1) {
     const right = input[y][x + 1];
     const left = input[y][x - 1];
@@ -64,6 +70,7 @@ const check = (
     } else {
       return -1;
     }
+    // right - middle
   } else if (x === input[0].length - 1 && y > 0 && y < input.length - 1) {
     const left = input[y][x - 1];
     const top = input[y - 1][x];
@@ -73,6 +80,7 @@ const check = (
     } else {
       return -1;
     }
+    // bottom - middle
   } else if (y === input.length - 1 && x > 0 && x < input[0].length - 1) {
     const right = input[y][x + 1];
     const top = input[y - 1][x];
@@ -82,6 +90,7 @@ const check = (
     } else {
       return -1;
     }
+    // middle
   } else {
     const right = input[y][x + 1];
     const left = input[y][x - 1];
