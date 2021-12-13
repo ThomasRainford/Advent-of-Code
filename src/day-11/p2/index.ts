@@ -112,13 +112,19 @@ export const p2 = () => {
   const input: number[][] = readInput();
   const octopi = parse(input);
 
-  let flashes = 0;
-  for (let i = 0; i < 100; i++) {
-    flashes += step(octopi);
+  let result;
+  let stepCount = 0;
+  while (true) {
+    const flashNum = step(octopi);
+    stepCount++;
+    if (flashNum === 100) {
+      result = stepCount;
+      break;
+    }
   }
 
   for (let i = 0; i < octopi.length; i++) {
     console.log(octopi[i].map((o) => o.level));
   }
-  console.log(flashes);
+  console.log(result);
 };
